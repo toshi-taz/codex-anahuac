@@ -3,7 +3,7 @@
 # Microsoft Agents League Hackathon 2026 — Challenge B: Role Play Game System
 #
 # Arquitectura:
-#   Player → Tlacuilo (GM + Foundry IQ) → [Guerrero_Aguila, Tlamatini,
+#   Player → Tlacuilo (GM + Foundry IQ) → [Guerrero-Aguila, Tlamatini,
 #            Curandera, Coyote] → MCP Server (MecanicasAnahuac)
 #
 # Seguridad: OWASP LLM Top 10 via guardrails.py
@@ -77,7 +77,7 @@ BANNER = """
 
 AGENT_ICONS = {
     "Tlacuilo":        "🧙",
-    "Guerrero_Aguila": "🦅",
+    "Guerrero-Aguila": "🦅",
     "Tlamatini":       "📚",
     "Curandera":       "🌿",
     "Coyote":          "🦊",
@@ -167,7 +167,7 @@ def orchestrate(player_input: str, openai_client, conversations: dict) -> str:
     analysis_prompt = f"""
 Analiza el input del jugador y responde SOLO con JSON válido (sin markdown):
 {{
-  "agentes_necesarios": ["Guerrero_Aguila","Tlamatini","Curandera","Coyote"],
+  "agentes_necesarios": ["Guerrero-Aguila","Tlamatini","Curandera","Coyote"],
   "tipo_escena": "combate|exploración|social|curación|información",
   "requiere_dados": true,
   "contexto_para_agentes": "instrucción breve"
@@ -194,7 +194,7 @@ Estado party: {json.dumps(world_state['party'], ensure_ascii=False)}
         decision = json.loads(clean)
     except Exception:
         decision = {
-            "agentes_necesarios": ["Guerrero_Aguila"],
+            "agentes_necesarios": ["Guerrero-Aguila"],
             "tipo_escena":        "exploración",
             "requiere_dados":     False,
             "contexto_para_agentes": player_input,
@@ -319,7 +319,7 @@ def main():
 
     # Crear conversaciones para cada agente
     print("\n🧙 Invocando a los 5 agentes del Códex...")
-    agent_names = ["Tlacuilo", "Guerrero_Aguila", "Tlamatini", "Curandera", "Coyote"]
+    agent_names = ["Tlacuilo", "Guerrero-Aguila", "Tlamatini", "Curandera", "Coyote"]
     conversations = {}
     for name in agent_names:
         try:
