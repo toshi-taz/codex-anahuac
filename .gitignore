@@ -17,3 +17,13 @@ __pycache__/
 # Archivos de sistema
 .DS_Store
 *.swp
+# Cache Python
+__pycache__/
+*.pyc
+
+# Archivos temporales de fix
+fix_guerrero*.py
+agent_client_v1_backup.py
+
+# PDFs locales (ya están en Azure Blob)
+*.pdf
