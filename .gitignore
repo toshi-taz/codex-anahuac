@@ -1,0 +1,19 @@
+# Secretos - NUNCA subir
+.env
+
+# PDFs (ya están en Azure Blob)
+*.pdf
+
+# Entorno virtual
+labenv/
+.venv/
+env/
+
+# Cache Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Archivos de sistema
+.DS_Store
+*.swp
