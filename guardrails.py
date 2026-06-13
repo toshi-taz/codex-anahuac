@@ -26,6 +26,10 @@ INJECTION_PATTERNS = [
     r"ignora\s+(tus\s+)?(instrucciones|reglas|restricciones)",
     r"ignore\s+(your\s+)?(instructions|rules|restrictions)",
     r"olvida\s+(todo|tus\s+instrucciones|que\s+eres)",
+    r"(?i)ignore\s+(previous|all|prior|your)\s+(instructions?|context|prompt|directives?)",
+    r"(?i)ignora(r)?\s+(las\s+)?instrucciones\s+(anteriores?|previas?)",
+    r"(?i)act\s+as\s+(dan|jailbreak|evil|unrestricted|an?\s+ai\s+without\s+restrictions?)",
+    r"(?i)^SYSTEM\s*:",
     r"forget\s+(everything|your\s+instructions|you\s+are)",
     r"override\s+(your|the|all)\s+(instructions|rules|system)",
     r"(muéstrame|repite|imprime|print|show|reveal)\s+(tu\s+)?(system\s+)?prompt",
@@ -43,6 +47,12 @@ INJECTION_PATTERNS = [
 
 OUT_OF_CHARACTER_SIGNALS = [
     "como modelo de lenguaje", "as a language model",
+    "as an ai language model",
+    "my training data",
+    "as an artificial intelligence",
+    "i don't have personal opinions",
+    "i cannot have personal",
+    "i am not able to have",
     "como asistente de ia", "as an ai assistant",
     "mis instrucciones dicen", "my instructions say",
     "system prompt", "soy un programa", "i am a program",
@@ -58,6 +68,11 @@ OUT_OF_SCOPE_PATTERNS = [
 
 CREDENTIAL_PATTERNS = [
     r"['\"]?(sk|pk|api)[_-]?key['\"]?\s*[:=]\s*['\"]?[a-zA-Z0-9_\-]{20,}",
+    r"sk-[a-zA-Z0-9]{20,}",
+    r"(?i)(api[_-]?key|access[_-]?token)\s*[=:]\s*[a-zA-Z0-9\-_]{16,}",
+    r"https?://[^:\s]+:[^@\s]{4,}@[^\s]+",
+    r"AccountKey=[a-zA-Z0-9+/=]{4,}",
+    r"(?i)password\s*[=:]\s*[^\s&]{4,}",
     r"Bearer\s+[a-zA-Z0-9\._\-]{20,}",
 ]
 
@@ -150,7 +165,8 @@ def validate_mcp_tool(tool_name):
 def validate_lore_content(content):
     sanitized = content
     poison_patterns = [
-        r"(?i)ignora\s+las\s+instrucciones",
+        r"(?i)ignores?\s+(las\s+)?instrucciones",
+        r"(?i)ignora[sr]?\s+(las\s+)?instrucciones",
         r"(?i)ignore\s+(previous|all|your)\s+instructions",
         r"(?i)\[SYSTEM\].*?\[/SYSTEM\]",
         r"(?i)###\s*instruction",

@@ -27,3 +27,12 @@ agent_client_v1_backup.py
 
 # PDFs locales (ya están en Azure Blob)
 *.pdf
+
+# Backups y temporales
+*.bak
+*.bak2
+*.save
+fix_*.py
+patch_*.py
+*_backup.py
+audit_repo.py
