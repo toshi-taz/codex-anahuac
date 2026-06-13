@@ -11,6 +11,7 @@ import asyncio
 import json
 import re
 import uuid
+import base64
 import gradio as gr
 from dotenv import load_dotenv
 
@@ -623,6 +624,17 @@ Escribe la narrativa final en español con este formato exacto:
 Usa lenguaje épico y poético del México prehispánico. Máximo 250 palabras."""
 
     narrative = call_agent("Tlacuilo", synthesis_prompt)
+
+    # Guardia: si Tlacuilo devuelve JSON crudo en lugar de narrativa
+    if narrative.strip()[:1] in ("{", "["):
+        voces = [r for r in agent_responses.values() if r and not r.startswith("[")]
+        sep = "\n\n"
+        narrative = (
+            "\U0001f304 *Las estrellas sobre Tenochtitlan se alinean...*"
+            + sep + "\U0001f4dc " + " \u00b7 ".join(voces) if voces else
+            "\U0001f304 *El Templo Mayor vibra.*" + sep +
+            "\u2694\ufe0f *Conecta Azure Foundry para la narrativa completa.*"
+        )
 
     world_state["scene_type"]    = tipo_escena
     world_state["active_agents"] = agentes_necesarios
