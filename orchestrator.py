@@ -200,8 +200,15 @@ Estado party: {json.dumps(world_state['party'], ensure_ascii=False)}
             "contexto_para_agentes": player_input,
         }
 
-    agentes = [a for a in decision.get("agentes_necesarios", [])
-               if a in conversations]
+    # Normalizar nombres: Tlacuilo puede devolver "TLAMATINI" o "Guerrero_Aguila"
+    _canon = {k.upper().replace("-", "_"): k for k in conversations}
+    _canon.update({k.upper(): k for k in conversations})
+    raw_agents = decision.get("agentes_necesarios", [])
+    agentes = [
+        _canon.get(a.upper().replace("-", "_"), a)
+        for a in raw_agents
+        if _canon.get(a.upper().replace("-", "_"), a) in conversations
+    ]
     print(f"   📋 Agentes: {agentes} | Escena: {decision.get('tipo_escena','?')}")
 
     # PASO 2: Agentes responden en carácter

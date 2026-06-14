@@ -258,6 +258,10 @@ Abre **http://localhost:7860** y haz clic en **"🔌 Conectar Azure Foundry"**.
 python test_guardrails.py  # Debe mostrar 37/37 — 100%
 ```
 
+> **Nota:** Los warnings `HTTP 422 Unprocessable Entity` que Gradio registra en consola al
+> iniciar son normales — corresponden a peticiones internas de Gradio para descubrir la API
+> y no afectan el funcionamiento de la aplicación.
+
 ---
 
 ## 🎮 Demo para Jueces

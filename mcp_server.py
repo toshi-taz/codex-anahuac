@@ -68,7 +68,7 @@ NUMERALES_PODER = {
 # ─── HERRAMIENTAS MCP ─────────────────────────────────────────────────────────
 
 @mcp.tool()
-def tirar_dados_combate(atacante: str, tipo_ataque: str) -> dict:
+async def tirar_dados_combate(atacante: str, tipo_ataque: str) -> dict:
     """
     Tira dados para resolver combate según las reglas mexicas.
     El objetivo en la xochiyaoyotl es capturar, no matar.
@@ -119,7 +119,7 @@ def tirar_dados_combate(atacante: str, tipo_ataque: str) -> dict:
 
 
 @mcp.tool()
-def consultar_tonalpohualli() -> dict:
+async def consultar_tonalpohualli() -> dict:
     """
     Consulta el día actual en el calendario sagrado Tonalpohualli.
     Determina los augurios y la energía del día para la partida.
@@ -234,7 +234,7 @@ def aplicar_curacion(paciente: str, planta: str) -> dict:
 
 
 @mcp.tool()
-def consultar_mercado(ciudad: str) -> dict:
+async def consultar_mercado(ciudad: str) -> dict:
     """
     El Coyote consulta precios y disponibilidad en el tianguis.
     
