@@ -20,6 +20,12 @@
 
 ---
 
+## 🎬 Demo Video
+
+[![Demo Video](https://img.youtube.com/vi/BnnaKe4qFAI/0.jpg)](https://youtu.be/BnnaKe4qFAI)
+
+---
+
 ## 🌄 Descripción del Proyecto
 
 **Codex Anáhuac** es un juego de rol por turnos donde el jugador interactúa con un grupo de cinco agentes de IA, cada uno con una personalidad, rol y habilidades únicas inspiradas en la cultura mexica. El sistema demuestra orquestación multi-agente avanzada, razonamiento en múltiples pasos y producción de narrativas coherentes con lore histórico recuperado de **Microsoft Foundry IQ**.
